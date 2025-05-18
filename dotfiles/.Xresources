@@ -1,0 +1,12 @@
+Xft.dpi: 192
+
+xterm*faceName: Liberation Mono
+xterm*faceSize: 8
+
+xterm*background: #050f0e
+xterm*foreground: #ffffff
+
+xterm*VT100.Translations: #override \
+	Ctrl <Key>plus: larger-vt-font() \n\
+	Ctrl <Key>minus: smaller-vt-font() \n\
+	Ctrl <Key>0: set-vt-font(d)

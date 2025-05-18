@@ -1,0 +1,39 @@
+# Include system-wide settings (optional but recommended)
+$include /etc/inputrc
+
+# Enable case-insensitive completion
+set completion-ignore-case On
+
+# Show all completions immediately if ambiguous (Tab x2)
+set show-all-if-ambiguous On
+set show-all-if-unmodified On
+
+# Display completion options in color (if your terminal supports it)
+set colored-stats On
+set visible-stats On
+
+# Mark symlinked directories with a trailing slash
+set mark-symlinked-directories On
+
+# Increase the threshold for showing "Display all X possibilities?" prompt
+set completion-query-items 150
+
+# Only show completions with at least 3 matching prefix characters
+set completion-prefix-display-length 3
+
+# Use a visible bell instead of an audible one
+set bell-style visible
+
+# History search with up/down arrows (like in Vim's ':' prompt)
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# History search with Ctrl+P / Ctrl+N (Emacs-style)
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+
+# Optional: Enable Emacs editing mode (default for Bash)
+set editing-mode emacs
+
+# Optional: Example of custom key binding (delete previous word with Ctrl+W)
+# "\C-w": unix-word-rubout
