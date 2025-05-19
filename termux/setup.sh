@@ -27,6 +27,7 @@ if [ "$hasAddedLine" -eq 1 ]; then
 fi
 
 # Configs
+cd ..
 . $SETUP_DIR/copyconfigs.sh
 
 # Git
