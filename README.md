@@ -2,7 +2,8 @@
 This repository contains all of my personal data and is used as context for my QRx metaverse 
 
 ## Setup
-- Run setup for your OS: ./projects/$OS/setup.sh
+- ./setup.sh for ONLY Arch Linux
+- ./termux/setup.sh for ONLY for Android Termux
 - To override or change API keys, create a ~/.ENV with the following
 
 ### Environment variables
