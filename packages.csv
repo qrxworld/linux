@@ -9,6 +9,13 @@ jq
 firefox
 xsel
 ttf-liberation
+noto-fonts
+noto-fonts-emoji
+ttf-dejavu
+xdotool
+pango
+rofi
+rofimoji
 brightnessctl
 redshift
 kiwix-tools
