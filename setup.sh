@@ -52,7 +52,8 @@ for line in "${lines[@]}"; do
 done
 
 if [ "$hasAddedLine" -eq 1 ]; then
-  echo "Restarting sshd..."
+  sudo systemctl start sshd
+  sudo systemctl enable sshd
   sudo systemctl restart sshd
 fi
 
