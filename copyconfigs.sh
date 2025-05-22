@@ -14,9 +14,7 @@ touch "$HOME/.ENV"
 . "$HOME/.ENV"
 
 # Dotfiles
-cp -rT "$SETUP_DIR/dotfiles/.vim" ~/.vim
 cp -rT "$SETUP_DIR/dotfiles/.config" ~/.config
-cp "$SETUP_DIR/dotfiles/.vimrc" ~/.vimrc
 cp "$SETUP_DIR/dotfiles/.inputrc" ~/.inputrc
 cp "$SETUP_DIR/dotfiles/.nanorc" ~/.nanorc
 cp "$SETUP_DIR/dotfiles/.tmux.conf" ~/.tmux.conf

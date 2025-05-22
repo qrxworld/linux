@@ -1,8 +1,106 @@
--- Import existing vim configs
-vim.opt.runtimepath:prepend(vim.fn.expand('~') .. '/.vim')
-vim.opt.runtimepath:append(vim.fn.expand('~') .. '/.vim/after')
-vim.opt.packpath = vim.o.runtimepath
-vim.cmd('source ' .. vim.fn.expand('~') .. '/.vimrc')
+vim.opt.syntax = 'on'
+vim.opt.termguicolors = true
+
+-- Autoupdates
+vim.opt.autoread = true
+vim.opt.updatetime = 1000
+
+-- Autocommands for file checking
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter'}, {
+  pattern = '*',
+  callback = function()
+    vim.cmd('checktime')
+  end,
+  desc = 'Check for external changes when gaining focus or entering a buffer'
+})
+vim.api.nvim_create_autocmd('CursorHold', {
+  pattern = '*',
+  callback = function()
+    vim.cmd('checktime')
+  end,
+  desc = 'Check for external changes when the cursor is idle'
+})
+
+-- Wrapping
+vim.opt.wrap = true
+vim.opt.linebreak = true 
+vim.opt.list = false -- Turn off 'list' mode as it conflicts with linebreak
+
+-- Formatting
+vim.opt.relativenumber = true
+
+-- Tabs
+-- Autocommands for FileType settings
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+  desc = 'Set tab settings for all file types'
+})
+
+-- Keyboard shortcuts
+vim.g.mapleader = ','
+
+-- Using vim.keymap.set for all mappings
+local mappings = {
+  -- Normal mode mappings
+  n = {
+    -- Insert current time in HHMM format
+    ['<leader>t'] = { 'strftime("%H%M")<CR>P', 'Insert current time (HHMM)' },
+    -- Insert horizontal rule
+    ['<leader>hr'] = { 'o<CR><CR><CR><Esc>40i=<Esc>o<CR><CR><CR><Esc>', 'Insert horizontal rule' },
+    -- LLMs
+    [',sum'] = { ':%w !hey \'summarize the current buffer\' --more<CR>', 'Summarize buffer with hey' },
+    [',next'] = { ':%w !hey \'what should i work on next?\' --more<CR>', 'Ask hey what to work on next' },
+    [',save'] = { ':!cd ~/oz/;clear;save<CR>', 'Save with custom script' },
+    [',hey'] = { ':%w !hey --more --prompt \'<CR>', 'Prompt hey with current buffer' },
+    -- Yank current line to system clipboard
+    ['yy'] = { function() vim.fn.system({'xsel', '-ib'}, vim.fn.getline('.')) vim.cmd('redraw!') end, 'Yank current line to system clipboard' },
+    -- Delete current line to system clipboard
+    ['dd'] = { function() vim.fn.system({'xsel', '-ib'}, vim.fn.getline('.')) vim.cmd('normal! dd') vim.cmd('redraw!') end, 'Delete current line to system clipboard' },
+  },
+  -- Insert mode mappings
+  i = {
+    ['jj'] = { '<Esc>', 'Exit insert mode' },
+    -- Insert current time in HHMM format
+    ['<leader>t'] = { '<C-R>=strftime("%H%M")<CR>', 'Insert current time (HHMM) in insert mode' },
+    -- MARKDOWN
+    [',['] = { '[ ]', 'Insert checkbox' },
+  },
+  -- Visual mode mappings
+  v = {
+    -- Yank selection to system clipboard
+    ['y'] = { function() vim.fn.system({'xsel', '-ib'}, vim.fn.getreg('"')) vim.cmd('redraw!') end, 'Yank selection to system clipboard' },
+    -- Delete selection to system clipboard
+    ['d'] = { function()
+      local yanked_text = vim.fn.getreg('"')
+      vim.cmd('normal! d') -- Perform the delete action
+      vim.fn.system({'xsel', '-ib'}, yanked_text)
+      vim.cmd('redraw!')
+    end, 'Delete selection to system clipboard' },
+  }
+}
+
+-- Loop through mappings and set them
+for mode, mode_mappings in pairs(mappings) do
+  for lhs, rhs_and_desc in pairs(mode_mappings) do
+    local rhs = rhs_and_desc[1]
+    local desc = rhs_and_desc[2]
+    local opts = { noremap = true, silent = true, desc = desc } -- Add `desc` for `:h key-notation` and improved discoverability
+
+    -- For mappings that are functions, we need to pass them directly.
+    -- For string mappings, we enclose them in a table to correctly pass to vim.keymap.set.
+    if type(rhs) == 'function' then
+      vim.keymap.set(mode, lhs, rhs, opts)
+    else
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+  end
+end
 
 -- Define your time thresholds
 local morning_hour = 7
