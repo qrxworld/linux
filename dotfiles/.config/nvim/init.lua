@@ -59,14 +59,16 @@ local mappings = {
     [',next'] = { ':%w !hey \'what should i work on next?\' --more<CR>', 'Ask hey what to work on next' },
     [',save'] = { ':!cd ~/oz/;clear;save<CR>', 'Save with custom script' },
     [',hey'] = { ':%w !hey --more --prompt \'<CR>', 'Prompt hey with current buffer' },
-    -- REMOVED: Custom 'yy' and 'dd' mappings for xsel are no longer needed.
-    -- vim.opt.clipboard = 'unnamedplus' handles this automatically.
-    -- ['yy'] = { function() vim.fn.system({'xsel', '-ib'}, vim.fn.getline('.')) vim.cmd('redraw!') end, 'Yank current line to system clipboard' },
-    -- ['dd'] = { function() vim.fn.system({'xsel', '-ib'}, vim.fn.getline('.')) vim.cmd('normal! dd') vim.cmd('redraw!') end, 'Delete current line to system clipboard' },
+    -- Escape sequences
+    ['<Find>'] = { '<Home>', 'Move to end of line in insert mode' },
+    ['<Select>'] = { '<End>', 'Move to beginning of line in insert mode' },
   },
   -- Insert mode mappings
   i = {
     ['jj'] = { '<Esc>', 'Exit insert mode' },
+    -- Escape sequences
+    ['<Find>'] = { '<Home>', 'Move to end of line in insert mode' },
+    ['<Select>'] = { '<End>', 'Move to beginning of line in insert mode' },
     -- Insert current time in HHMM format
     ['<leader>t'] = { '<C-R>=strftime("%H%M")<CR>', 'Insert current time (HHMM) in insert mode' },
     -- MARKDOWN
@@ -74,15 +76,9 @@ local mappings = {
   },
   -- Visual mode mappings
   v = {
-    -- REMOVED: Custom 'y' and 'd' mappings for xsel are no longer needed.
-    -- vim.opt.clipboard = 'unnamedplus' handles this automatically.
-    -- ['y'] = { function() vim.fn.system({'xsel', '-ib'}, vim.fn.getreg('"')) vim.cmd('redraw!') end, 'Yank selection to system clipboard' },
-    -- ['d'] = { function()
-    --   local yanked_text = vim.fn.getreg('"')
-    --   vim.cmd('normal! d') -- Perform the delete action
-    --   vim.fn.system({'xsel', '-ib'}, yanked_text)
-    --   vim.cmd('redraw!')
-    -- end, 'Delete selection to system clipboard' },
+    -- Escape sequences
+    ['<Find>'] = { '<Home>', 'Move to end of line in insert mode' },
+    ['<Select>'] = { '<End>', 'Move to beginning of line in insert mode' },
   }
 }
 
