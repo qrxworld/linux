@@ -21,3 +21,29 @@ syn match markdownConflictMarkerEnd '^>>>>>>> .*$' contains=@NoSpell
 hi def link markdownConflictMarkerBegin Error
 hi def link markdownConflictMarkerSeparator WarningMsg
 hi def link markdownConflictMarkerEnd Error
+
+" Git repository reference syntax highlighting
+syn match gitRepoReference '\v\<[^>]+\.git\>' contains=@NoSpell
+hi def link gitRepoReference DiffAdd 
+
+" @mention syntax highlighting (matches @word patterns)
+syn match atMention '\v\@[a-zA-Z0-9_]+' contains=@NoSpell
+hi def link atMention Character 
+
+" Special words
+syn case match
+syn keyword allCapsWord TODO FIXME SPRINT FOCUS TODAY TODAYS SLEEP WEIGHT DREAMS
+hi def link allCapsWord Constant
+syn case ignore
+
+" Email addresses
+syn match emailAddress '\v[a-zA-Z0-9._%+-]+\@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' contains=@NoSpell
+hi def link emailAddress Underlined
+
+" HTTP/HTTPS URLs - escaped special characters
+syn match httpUrl '\v(https?:\/\/)[a-zA-Z0-9._~:\/?#\[\]\@!$&''()=;,-]+' contains=@NoSpell
+hi def link httpUrl Underlined
+
+" Numbers in brackets [1], [123], etc.
+syn match numbersInBrackets '\[[0-9]\+\]' contains=@NoSpell
+hi def link numbersInBrackets Number
