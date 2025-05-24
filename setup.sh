@@ -91,6 +91,35 @@ git config --global init.defaultBranch main
 git config --global pull.rebase false
 git config --global submodule.recurse true
 
+# AUR Helper (yay) and Brave Browser
+if ! command -v yay >/dev/null; then
+  echo "Installing yay AUR helper..."
+  
+  # Install prerequisites for building yay
+  sudo pacman -S --needed base-devel git
+  
+  # Clone yay repository
+  cd /tmp
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  
+  # Build and install yay
+  makepkg -si --noconfirm
+  
+  # Clean up
+  cd /
+  rm -rf /tmp/yay
+  
+  echo "yay installed successfully"
+fi
+
+# Install Brave Browser using yay
+if ! command -v brave >/dev/null; then
+  echo "Installing Brave Browser..."
+  yay -S --noconfirm brave-bin
+  echo "Brave Browser installed successfully"
+fi
+
 ## Large Language Models
 if ! command -v ollama >/dev/null; then
   curl -fsSL 'https://ollama.com/install.sh' | sh

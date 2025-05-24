@@ -7,16 +7,12 @@ if [ -f "$HOME/.ENV" ]; then
   source ~/.ENV
 fi
 
-# OS
-if grep -q "Linux Mint" /etc/issue; then
-  export OS="mint"
-fi
-
 # Bash prompt
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vi='vim'
 alias vim='nvim'
+alias brave="brave --force-device-scale-factor=1 &> /null/dev &"
 
 # Clipboard 
 if [[ "$OS" == "termux" ]]; then
