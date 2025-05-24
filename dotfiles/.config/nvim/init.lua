@@ -2,6 +2,13 @@ vim.opt.syntax = 'on'
 vim.opt.termguicolors = true
 vim.opt.clipboard = 'unnamedplus'
 
+-- QRx
+vim.filetype.add({
+  extension = {
+    qrx = "markdown",
+  },
+})
+
 -- Autoupdates
 vim.opt.autoread = true
 vim.opt.updatetime = 1000
