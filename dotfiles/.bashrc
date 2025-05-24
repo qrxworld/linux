@@ -12,7 +12,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vi='vim'
 alias vim='nvim'
-alias brave="brave --force-device-scale-factor=1"
+alias brave="brave --force-device-scale-factor=1.2"
 
 # Clipboard 
 if [[ "$OS" == "termux" ]]; then
@@ -26,6 +26,7 @@ export ME="$HOME/qrx"
 export LINUX="$ME/linux"
 export HISTORY="$ME/history.md"
 export CONTEXT="$ME/context"
+export VIBE="$ME/vibe"
 
 # Hey
 export HEY="$ME/hey"
@@ -58,6 +59,12 @@ save() {
   "$HEY_BOT/git.sh" "$@"
 }
 export -f save
+
+# Vibe commands
+vibe() {
+  "$VIBE/vibe.sh" "$@"
+}
+export -f vibe
 
 # Foreground colors
 export BLACK='\033[30m'
