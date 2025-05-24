@@ -12,7 +12,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vi='vim'
 alias vim='nvim'
-alias brave="brave --force-device-scale-factor=1 &> /null/dev &"
+alias brave="brave --force-device-scale-factor=1"
 
 # Clipboard 
 if [[ "$OS" == "termux" ]]; then
