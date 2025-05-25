@@ -22,18 +22,16 @@ else
 fi
 
 # QRx
-export ME="$HOME/qrx"
-export LINUX="$ME/linux"
-export HISTORY="$ME/history.md"
+export QRX="$HOME/qrx"
+export HISTORY="$QRX/history.md"
+export ME="$QRX/$USER"
 export CONTEXT="$ME/context"
-export VIBE="$ME/vibe"
+export LINUX="$QRX/linux"
 
-# Hey
-export HEY="$ME/hey"
-export HEY_BOT="$HEY/bot"
-export HEY_GIT="$HEY_BOT/git.sh"
-
-export chat="$hey/hey.sh"
+# VIBE 
+export VIBE="$LINUX/vibe"
+export HEY="$VIBE/hey"
+export GIT="$HEY/bot/git.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
 # Git related
@@ -46,7 +44,11 @@ gd(){
 }
 export -f gs
 
-# Hey commands
+# Vibe commands
+vibe() {
+  "$VIBE/vibe.sh" "$@"
+}
+export -f vibe
 hey() {
   "$HEY/hey.sh" "$@"
 }
@@ -56,15 +58,9 @@ context() {
 }
 export -f context
 save() {
-  "$HEY_BOT/git.sh" "$@"
+  "$GIT" "$@"
 }
 export -f save
-
-# Vibe commands
-vibe() {
-  "$VIBE/vibe.sh" "$@"
-}
-export -f vibe
 
 # Foreground colors
 export BLACK='\033[30m'
