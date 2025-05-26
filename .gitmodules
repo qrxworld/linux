@@ -1,0 +1,3 @@
+[submodule "vibe"]
+	path = vibe
+	url = git@github.com:qrxworld/vibe.git
