@@ -2,7 +2,6 @@ iwd
 neovim
 git
 openssh
-go
 tmux
 less
 jq
@@ -21,3 +20,7 @@ redshift
 kiwix-tools
 rsync
 ffmpeg
+npm
+nodejs
+go
+flameshot
