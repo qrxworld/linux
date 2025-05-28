@@ -229,3 +229,8 @@ exec --no-startup-id redshift -l 45.523064:-122.676483 -t 6500:3000
 
 # Other custom shortcuts
 exec_always --no-startup-id setxkbmap -option caps:swapescape
+
+
+# Keys
+exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets,pkcs11,ssh
