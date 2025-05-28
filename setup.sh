@@ -90,6 +90,7 @@ sudo usermod -aG video $USER
 git config --global init.defaultBranch main
 git config --global pull.rebase false
 git config --global submodule.recurse true
+git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 
 # AUR Helper (yay) and Brave Browser
 if ! command -v yay >/dev/null; then

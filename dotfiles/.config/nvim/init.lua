@@ -8,16 +8,6 @@ vim.filetype.add({
     qrx = "markdown",
   },
 })
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
-  group = vim.api.nvim_create_augroup("SetMarkdownAsDefault", { clear = true }),
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype == '' then
-      vim.bo.filetype = 'markdown'
-    end
-  end,
-  desc = "Set Markdown as default for new files or files with an undetected filetype"
-})
 
 -- Autoupdates
 vim.opt.autoread = true

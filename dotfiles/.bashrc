@@ -28,9 +28,8 @@ export ME="$QRX/$USER"
 export CONTEXT="$ME/context"
 export LINUX="$QRX/linux"
 
-# VIBE 
-export VIBE="$LINUX/vibe"
-export HEY="$VIBE/hey"
+# Hey 
+export HEY="$LINUX/hey"
 export GIT="$HEY/bot/git.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
@@ -44,11 +43,7 @@ gd(){
 }
 export -f gs
 
-# Vibe commands
-vibe() {
-  "$VIBE/vibe.sh" "$@"
-}
-export -f vibe
+# Hey
 hey() {
   "$HEY/hey.sh" "$@"
 }

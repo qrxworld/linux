@@ -19,10 +19,9 @@ brightnessctl
 redshift
 kiwix-tools
 rsync
-ffmpeg
 npm
 nodejs
-go
 flameshot
 zip
 unzip
+libsecret
