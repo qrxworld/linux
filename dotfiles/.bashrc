@@ -24,13 +24,10 @@ fi
 # QRx
 export QRX="$HOME/qrx"
 export HISTORY="$QRX/history.md"
-export ME="$QRX/$USER"
-export CONTEXT="$ME/context"
-export LINUX="$QRX/linux"
+export LINUX="$HOME/linux"
 
 # Hey 
 export HEY="$QRX/hey"
-export GIT="$HEY/git.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
 # Git related
@@ -49,11 +46,11 @@ hey() {
 }
 export -f hey
 context() {
-  "$LINUX/hey/contextualize.sh" "$@"
+  "$HEY/utils/contextualize.sh" "$@"
 }
 export -f context
 save() {
-  "$GIT" "$@"
+  "$HEY/git.sh" "$@"
 }
 export -f save
 
