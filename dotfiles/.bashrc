@@ -30,7 +30,7 @@ export LINUX="$QRX/linux"
 
 # Hey 
 export HEY="$QRX/hey"
-export GIT="$LINUX/hey/bot/git.sh"
+export GIT="$HEY/git.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
 # Git related
@@ -49,7 +49,7 @@ hey() {
 }
 export -f hey
 context() {
-  "$HEY/contextualize.sh" "$@"
+  "$LINUX/hey/contextualize.sh" "$@"
 }
 export -f context
 save() {
