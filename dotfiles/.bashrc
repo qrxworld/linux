@@ -29,8 +29,8 @@ export CONTEXT="$ME/context"
 export LINUX="$QRX/linux"
 
 # Hey 
-export HEY="$LINUX/hey"
-export GIT="$HEY/bot/git.sh"
+export HEY="$QRX/hey"
+export GIT="$LINUX/hey/bot/git.sh"
 export sshadd="eval $(ssh-agent) & ssh-add"
 
 # Git related
