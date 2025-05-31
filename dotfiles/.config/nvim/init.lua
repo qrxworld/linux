@@ -1,3 +1,4 @@
+vim.cmd("filetype plugin indent on")
 vim.opt.syntax = 'on'
 vim.opt.termguicolors = true
 vim.opt.clipboard = 'unnamedplus'
